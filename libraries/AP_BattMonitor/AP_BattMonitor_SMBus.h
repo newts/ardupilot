@@ -15,6 +15,7 @@ class AP_BattMonitor_SMBus : public AP_BattMonitor_Backend
 {
 public:
 
+<<<<<<< HEAD
     // Smart Battery Data Specification Revision 1.1
     enum BATTMONITOR_SMBUS {
         BATTMONITOR_SMBUS_TEMP = 0x08,                 // Temperature
@@ -28,6 +29,8 @@ public:
         BATTMONITOR_SMBUS_MANUFACTURE_DATA = 0x23,     // Manufacture Data
     };
 
+=======
+>>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
     /// Constructor
     AP_BattMonitor_SMBus(AP_BattMonitor &mon,
                     AP_BattMonitor::BattMonitor_State &mon_state,

@@ -24,7 +24,10 @@
 #include "AP_Compass_UAVCAN.h"
 #endif
 #include "AP_Compass_MMC3416.h"
+<<<<<<< HEAD
 #include "AP_Compass_MAG3110.h"
+=======
+>>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
 #include "AP_Compass.h"
 
 extern AP_HAL::HAL& hal;
@@ -808,9 +811,12 @@ void Compass::_detect_backends(void)
 #elif HAL_COMPASS_DEFAULT == HAL_COMPASS_LIS3MDL
     ADD_BACKEND(DRIVER_LIS3MDL, AP_Compass_LIS3MDL::probe(*this, hal.spi->get_device(HAL_COMPASS_LIS3MDL_NAME), false, ROTATION_ROLL_180_YAW_90),
                 AP_Compass_LIS3MDL::name, false);
+<<<<<<< HEAD
 #elif HAL_COMPASS_DEFAULT == HAL_COMPASS_MAG3110                
     ADD_BACKEND(DRIVER_MAG3110, AP_Compass_MAG3110::probe(*this, hal.i2c_mgr->get_device(HAL_MAG3110_I2C_BUS, HAL_MAG3110_I2C_ADDR), ROTATION_NONE),
                 AP_Compass_MAG3110::name, true);
+=======
+>>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
 #elif CONFIG_HAL_BOARD == HAL_BOARD_LINUX && CONFIG_HAL_BOARD_SUBTYPE != HAL_BOARD_SUBTYPE_LINUX_NONE
     ADD_BACKEND(DRIVER_HMC5883, AP_Compass_HMC5843::probe(*this, hal.i2c_mgr->get_device(HAL_COMPASS_HMC5843_I2C_BUS, HAL_COMPASS_HMC5843_I2C_ADDR)),
                 AP_Compass_HMC5843::name, false);

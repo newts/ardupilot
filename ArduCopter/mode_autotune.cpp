@@ -328,7 +328,12 @@ void Copter::ModeAutoTune::run()
     // if not auto armed or motor interlock not enabled set throttle to zero and exit immediately
     // this should not actually be possible because of the init() checks
     if (!motors->armed() || !ap.auto_armed || !motors->get_interlock()) {
+<<<<<<< HEAD
         zero_throttle_and_relax_ac();
+=======
+        motors->set_desired_spool_state(AP_Motors::DESIRED_SPIN_WHEN_ARMED);
+        attitude_control->set_throttle_out_unstabilized(0,true,g.throttle_filt);
+>>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
         pos_control->relax_alt_hold_controllers(0.0f);
         return;
     }

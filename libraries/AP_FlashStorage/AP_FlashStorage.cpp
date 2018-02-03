@@ -232,6 +232,7 @@ bool AP_FlashStorage::load_sector(uint8_t sector)
             write_offset = ofs;
             return true;
 
+<<<<<<< HEAD
         case BLOCK_STATE_WRITING: {
             /*
               we were interrupted while writing a block. We can't
@@ -255,6 +256,17 @@ bool AP_FlashStorage::load_sector(uint8_t sector)
                 return false;
             }
             if (!flash_read(sector, ofs+sizeof(header), &mem_buffer[block_ofs], block_nbytes)) {
+=======
+        case BLOCK_STATE_VALID:
+        case BLOCK_STATE_WRITING: {
+            uint16_t block_ofs = header.block_num*block_size;
+            uint16_t block_nbytes = (header.num_blocks_minus_one+1)*block_size;
+            if (block_ofs + block_nbytes > storage_size) {
+                return false;
+            }
+            if (state == BLOCK_STATE_VALID &&
+                !flash_read(sector, ofs+sizeof(header), &mem_buffer[block_ofs], block_nbytes)) {
+>>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
                 return false;
             }
             //debug("read at %u for %u\n", block_ofs, block_nbytes);
@@ -363,6 +375,7 @@ bool AP_FlashStorage::switch_sectors(void)
         return false;
     }
 
+<<<<<<< HEAD
     // mark current sector as full. This needs to be done before we
     // mark the new sector as in-use so that a power failure between
     // the two steps doesn't leave us with an erase on the
@@ -375,6 +388,18 @@ bool AP_FlashStorage::switch_sectors(void)
     // mark new sector as in-use
     header.state = SECTOR_STATE_IN_USE;
     if (!flash_write(new_sector, 0, (const uint8_t *)&header, sizeof(header))) {
+=======
+    // mark it in-use
+    header.state = SECTOR_STATE_IN_USE;
+    if (!flash_write(new_sector, 0, (const uint8_t *)&header, sizeof(header))) {
+        return false;
+    }
+
+
+    // mark current sector as full
+    header.state = SECTOR_STATE_FULL;
+    if (!flash_write(current_sector, 0, (const uint8_t *)&header, sizeof(header))) {
+>>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
         return false;
     }
 

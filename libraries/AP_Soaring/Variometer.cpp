@@ -75,6 +75,10 @@ float Variometer::correct_netto_rate(float climb_rate,
     //float temp_netto = netto_rate;
     //float dVdt = SpdHgt_Controller->get_VXdot();
     //netto_rate = netto_rate + aspd*dVdt/GRAVITY_MSS;
+<<<<<<< HEAD
     //gcs().send_text(MAV_SEVERITY_INFO, "%f %f %f %f",temp_netto,dVdt,netto_rate,barometer.get_altitude());
+=======
+    //gcs().send_text(MAV_SEVERITY_INFO, "%f %f %f %f\n",temp_netto,dVdt,netto_rate,barometer.get_altitude());
+>>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
     return netto_rate;
 }

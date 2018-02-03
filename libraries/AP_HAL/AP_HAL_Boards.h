@@ -120,7 +120,10 @@
 #define HAL_COMPASS_OCPOC_ZYNQ         17
 #define HAL_COMPASS_EDGE               18
 #define HAL_COMPASS_LIS3MDL            19
+<<<<<<< HEAD
 #define HAL_COMPASS_MAG3110            20
+=======
+>>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
 
 /* Heat Types */
 #define HAL_LINUX_HEAT_PWM 1
@@ -191,10 +194,13 @@
 #define HAL_WITH_UAVCAN 0
 #endif
 
+<<<<<<< HEAD
 #ifndef HAL_WITH_IO_MCU
 #define HAL_WITH_IO_MCU 0
 #endif
 
+=======
+>>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
 // this is used as a general mechanism to make a 'small' build by
 // dropping little used features. We use this to allow us to keep
 // FMUv2 going for as long as possible
