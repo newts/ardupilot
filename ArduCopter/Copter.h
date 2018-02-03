@@ -40,6 +40,7 @@
 #include <DataFlash/DataFlash.h>          // ArduPilot Mega Flash Memory Library
 #include <AP_ADC/AP_ADC.h>             // ArduPilot Mega Analog to Digital Converter Library
 #include <AP_Baro/AP_Baro.h>
+#include <AP_Baro/AP_Baro_BME280.h>	// 01 Feb 18   JV	- with humidity
 #include <AP_Compass/AP_Compass.h>         // ArduPilot Mega Magnetometer Library
 #include <AP_Math/AP_Math.h>            // ArduPilot Mega Vector/Matrix math Library
 #include <AP_AccelCal/AP_AccelCal.h>                // interface and maths for accelerometer calibration
@@ -193,6 +194,9 @@ private:
     AP_Baro barometer;
     Compass compass;
     AP_InertialSensor ins;
+
+    AP_Baro_BME280 Gas1;	// 31 Jan 18   JV	- my temp/pres/humidity
+    
 
     RangeFinder rangefinder{serial_manager, ROTATION_PITCH_270};
     struct {

@@ -33,6 +33,7 @@ void Copter::userhook_MediumLoop()
 void Copter::userhook_SlowLoop()
 {
     // put your 3.3Hz code here
+  bar;
 }
 #endif
 
@@ -40,5 +41,14 @@ void Copter::userhook_SlowLoop()
 void Copter::userhook_SuperSlowLoop()
 {
     // put your 1Hz code here
+  static int ticker = 0;
+
+  if (++ticker > 10) {
+    ticker = 0;
+
+    gcs().send_text(MAV_SEVERITY_WARNING, "Gas1 T,P,H: %f,%f,%f",Gas1.Temperature, Gas1.Pressure, Gas1.Humidity);
+    //    const uint64_t now = AP_HAL::micros64();
+    //    DataFlash.Log_Write("Gas1", "TimeUS,Temp,Pres,Hum", "QOff", now, Gas1.Temperature, Gas1.Pressure, Gas1.Humidity);
+  }
 }
 #endif
