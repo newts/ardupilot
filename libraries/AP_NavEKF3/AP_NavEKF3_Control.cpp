@@ -391,11 +391,9 @@ void NavEKF3_core::checkAttitudeAlignmentStatus()
         Vector3f angleErrVarVec = calcRotVecVariances();
         if ((angleErrVarVec.x + angleErrVarVec.y) < sq(0.05235f)) {
             tiltAlignComplete = true;
-<<<<<<< HEAD
+
             gcs().send_text(MAV_SEVERITY_INFO, "EKF3 IMU%u tilt alignment complete",(unsigned)imu_index);
-=======
-            gcs().send_text(MAV_SEVERITY_INFO, "EKF3 IMU%u tilt alignment complete\n",(unsigned)imu_index);
->>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
+
         }
     }
 

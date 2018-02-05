@@ -6,10 +6,7 @@
 #include "AP_BattMonitor_SMBus_Solo.h"
 #include <utility>
 
-<<<<<<< HEAD
-=======
-#define BATTMONITOR_SMBUS_SOLO_MANUFACTURE_DATA     0x23    /// manufacturer data
->>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
+
 #define BATTMONITOR_SMBUS_SOLO_CELL_VOLTAGE         0x28    // cell voltage register
 #define BATTMONITOR_SMBUS_SOLO_CURRENT              0x2a    // current register
 #define BATTMONITOR_SMBUS_SOLO_BUTTON_DEBOUNCE      3       // button held down for 3 intervals will cause a power off event
@@ -81,11 +78,9 @@ void AP_BattMonitor_SMBus_Solo::timer()
     read_remaining_capacity();
 
     // read the button press indicator
-<<<<<<< HEAD
+
     if (read_block(BATTMONITOR_SMBUS_MANUFACTURE_DATA, buff, 6, false) == 6) {
-=======
-    if (read_block(BATTMONITOR_SMBUS_SOLO_MANUFACTURE_DATA, buff, 6, false) == 6) {
->>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
+
         bool pressed = (buff[1] >> 3) & 0x01;
 
         if (_button_press_count >= BATTMONITOR_SMBUS_SOLO_BUTTON_DEBOUNCE) {

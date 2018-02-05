@@ -209,11 +209,9 @@ void Copter::check_ekf_reset()
     if ((EKF2.getPrimaryCoreIndex() != ekf_primary_core) && (EKF2.getPrimaryCoreIndex() != -1)) {
         ekf_primary_core = EKF2.getPrimaryCoreIndex();
         Log_Write_Error(ERROR_SUBSYSTEM_EKF_PRIMARY, ekf_primary_core);
-<<<<<<< HEAD
+
         gcs().send_text(MAV_SEVERITY_WARNING, "EKF primary changed:%d", (unsigned)ekf_primary_core);
-=======
-        gcs().send_text(MAV_SEVERITY_WARNING, "EKF primary changed:%d\n", (unsigned)ekf_primary_core);
->>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
+
     }
 #endif
 }

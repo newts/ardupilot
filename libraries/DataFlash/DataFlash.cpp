@@ -273,17 +273,14 @@ bool DataFlash_Class::validate_structure(const struct LogStructure *logstructure
         }
     }
 
-<<<<<<< HEAD
+
     // ensure the FMTU messages reference valid multipliers
-=======
-    // ensure the FMTU messages reference valid units
->>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
+
     for (uint8_t j=0; j<strlen(logstructure->multipliers); j++) {
         char logmultiplier = logstructure->multipliers[j];
         uint8_t k;
         for (k=0; k<_num_multipliers; k++) {
-<<<<<<< HEAD
-=======
+
             if (logmultiplier == '-') {
                 // no sensible multiplier
                 break;
@@ -292,7 +289,7 @@ bool DataFlash_Class::validate_structure(const struct LogStructure *logstructure
                 // currently unknown multiplier....
                 break;
             }
->>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
+
             if (logmultiplier == _multipliers[k].ID) {
                 // found this one
                 break;

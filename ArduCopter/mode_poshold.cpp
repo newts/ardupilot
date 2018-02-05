@@ -140,14 +140,13 @@ void Copter::ModePosHold::run()
 
     // if not auto armed or motor interlock not enabled set throttle to zero and exit immediately
     if (!motors->armed() || !ap.auto_armed || !motors->get_interlock()) {
-<<<<<<< HEAD
+
         wp_nav->init_loiter_target();
         zero_throttle_and_relax_ac();
-=======
+
         motors->set_desired_spool_state(AP_Motors::DESIRED_SPIN_WHEN_ARMED);
         wp_nav->init_loiter_target();
         attitude_control->set_throttle_out_unstabilized(0,true,g.throttle_filt);
->>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
         pos_control->relax_alt_hold_controllers(0.0f);
         return;
     }

@@ -339,10 +339,9 @@ private:
         DRIVER_UAVCAN   =11,
         DRIVER_QMC5883  =12,
         DRIVER_SITL     =13,
-<<<<<<< HEAD
+
         DRIVER_MAG3110  =14,
-=======
->>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
+
     };
 
     bool _driver_enabled(enum DriverType driver_type);

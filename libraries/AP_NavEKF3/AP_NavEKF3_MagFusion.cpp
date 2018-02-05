@@ -119,24 +119,18 @@ void NavEKF3_core::controlMagYawReset()
 
             // send initial alignment status to console
             if (!yawAlignComplete) {
-<<<<<<< HEAD
+
                 gcs().send_text(MAV_SEVERITY_INFO, "EKF3 IMU%u initial yaw alignment complete",(unsigned)imu_index);
-=======
-                gcs().send_text(MAV_SEVERITY_INFO, "EKF3 IMU%u initial yaw alignment complete\n",(unsigned)imu_index);
->>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
+
             }
 
             // send in-flight yaw alignment status to console
             if (finalResetRequest) {
-<<<<<<< HEAD
+
                 gcs().send_text(MAV_SEVERITY_INFO, "EKF3 IMU%u in-flight yaw alignment complete",(unsigned)imu_index);
             } else if (interimResetRequest) {
                 gcs().send_text(MAV_SEVERITY_WARNING, "EKF3 IMU%u ground mag anomaly, yaw re-aligned",(unsigned)imu_index);
-=======
-                gcs().send_text(MAV_SEVERITY_INFO, "EKF3 IMU%u in-flight yaw alignment complete\n",(unsigned)imu_index);
-            } else if (interimResetRequest) {
-                gcs().send_text(MAV_SEVERITY_WARNING, "EKF3 IMU%u ground mag anomaly, yaw re-aligned\n",(unsigned)imu_index);
->>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
+
             }
 
             // update the yaw reset completed status

@@ -48,12 +48,12 @@ void Copter::ModeDrift::run()
 
     // if landed and throttle at zero, set throttle to zero and exit immediately
     if (!motors->armed() || !motors->get_interlock() || (ap.land_complete && ap.throttle_zero)) {
-<<<<<<< HEAD
+
         zero_throttle_and_relax_ac();
-=======
+
         motors->set_desired_spool_state(AP_Motors::DESIRED_SPIN_WHEN_ARMED);
         attitude_control->set_throttle_out_unstabilized(0,true,g.throttle_filt);
->>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
+
         return;
     }
 

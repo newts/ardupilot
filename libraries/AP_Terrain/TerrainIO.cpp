@@ -173,15 +173,11 @@ void AP_Terrain::open_file(void)
     }
     snprintf(p, 13, "/%c%02u%c%03u.DAT",
              block.lat_degrees<0?'S':'N',
-<<<<<<< HEAD
+
              MIN(abs((int32_t)block.lat_degrees), 99),
              block.lon_degrees<0?'W':'E',
              MIN(abs((int32_t)block.lon_degrees), 999));
-=======
-             abs((int32_t)block.lat_degrees),
-             block.lon_degrees<0?'W':'E',
-             abs((int32_t)block.lon_degrees));
->>>>>>> 08e312ad539a740dc812b7071f4cdec9350c3ad9
+
 
     // create directory if need be
     if (!directory_created) {
