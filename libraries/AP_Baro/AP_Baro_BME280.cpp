@@ -54,20 +54,27 @@ AP_Baro_BME280::AP_Baro_BME280(AP_Baro &baro, AP_HAL::OwnPtr<AP_HAL::Device> dev
 AP_Baro_Backend *AP_Baro_BME280::probe(AP_Baro &baro,
                                        AP_HAL::OwnPtr<AP_HAL::Device> dev)
 {
+#define STR_HELPER(xx) #xx
+#define STR(xx) STR_HELPER(xx)
     if (!dev) {
-        return nullptr;
+      fprintf(stderr, "JV " STR(__LINE__) "\n");
+      return nullptr;
     }
 
     AP_Baro_BME280 *sensor = new AP_Baro_BME280(baro, std::move(dev));
     if (!sensor || !sensor->_init()) {
         delete sensor;
+	fprintf(stderr, "JV " STR(__LINE__) "\n");
         return nullptr;
     }
+	  fprintf(stderr, "JV " STR(__LINE__) "\n");
     return sensor;
 }
 
 bool AP_Baro_BME280::_init()
 {
+  fprintf(stderr, "JV " STR(__LINE__) "\n");
+
     if (!_dev | !_dev->get_semaphore()->take(HAL_SEMAPHORE_BLOCK_FOREVER)) {
         return false;
     }

@@ -6,6 +6,12 @@
 
 #include "AP_Baro_Backend.h"
 
+
+// 19 Feb 18   JV	- should probably move to some global board config?
+#define HAL_BARO_BME280_I2C_ADDR 0x77
+
+
+
 class AP_Baro_BME280 : public AP_Baro_Backend
 {
 public:

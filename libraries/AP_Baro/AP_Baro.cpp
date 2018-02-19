@@ -31,6 +31,7 @@
 #include "AP_Baro_SITL.h"
 #include "AP_Baro_BMP085.h"
 #include "AP_Baro_BMP280.h"
+#include "AP_Baro_BME280.h"
 #include "AP_Baro_HIL.h"
 #include "AP_Baro_KellerLD.h"
 #include "AP_Baro_MS5611.h"
@@ -144,6 +145,10 @@ AP_Baro *AP_Baro::_instance;
  */
 AP_Baro::AP_Baro()
 {
+  fprintf(stderr, "JV BARO_MAX_INSTANCES %d \n", BARO_MAX_INSTANCES);
+  fprintf(stderr, "JV BARO_MAX_DRIVERS %d \n", BARO_MAX_DRIVERS);
+
+
     _instance = this;
     
     AP_Param::setup_object_defaults(this, var_info);
@@ -507,6 +512,14 @@ void AP_Baro::init(void)
                                           std::move(hal.i2c_mgr->get_device(_ext_bus, HAL_BARO_MS5611_I2C_ADDR))));
 #endif
     }
+
+    fprintf(stderr,"JV _num_drivers=%d _num_sensors=%d\n", _num_drivers, _num_sensors);
+// 19 Feb 18   JV	- for i2c2 in pixhawk?  eventually need to be in config?
+#define HAL_BARO_BME280_BUS 2
+    ADD_BACKEND(AP_Baro_BME280::probe(*this,
+                                      std::move(hal.i2c_mgr->get_device(HAL_BARO_BME280_BUS, HAL_BARO_BME280_I2C_ADDR))));
+    fprintf(stderr,"JV _num_drivers=%d _num_sensors=%d\n", _num_drivers, _num_sensors);
+
 
     if (_num_drivers == 0 || _num_sensors == 0 || drivers[0] == nullptr) {
         AP_BoardConfig::sensor_config_error("Baro: unable to initialise driver");
